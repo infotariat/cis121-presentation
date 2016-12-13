@@ -2,7 +2,7 @@ The R Programming Language
 ========================================================
 author: Barry Snowe
 date: December 13th, 2016
-autosize: true
+
 
 R in a nutshell
 ========================================================
