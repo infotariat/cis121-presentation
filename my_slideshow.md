@@ -23,22 +23,18 @@ Many of the visualizations that follow center around the **mtcars** data set. **
 > The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models).  
   
   
-### Partial data set
-The first ten rows of the data set are presented below.
+Partial data set
+=======================
+The first five rows of the data set are presented below.
 
 
 ```
-                   mpg cyl  disp  hp drat    wt  qsec vs am gear carb
-Mazda RX4         21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
-Mazda RX4 Wag     21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
-Datsun 710        22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
-Hornet 4 Drive    21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
-Hornet Sportabout 18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
-Valiant           18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
-Duster 360        14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
-Merc 240D         24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
-Merc 230          22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
-Merc 280          19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
+Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
 ```
 
 Research question
@@ -53,11 +49,7 @@ The goal is to see if there are any strong patterns that emerge that might guide
 
 mtcars1: pairs plot
 ========================================================
-Using the pairs() command we can generate a correlation matrix. We can get a bird's eye view of the scatter plots of every variable against each other.
-
-```r
-pairs(mtcars, main="mtcars data")
-```
+Using the pairs() command we can generate a correlation matrix. We can get a bird's eye view of the scatter plots of every variable against each other.  
 
 ![plot of chunk unnamed-chunk-2](my_slideshow-figure/unnamed-chunk-2-1.png)
 
@@ -468,8 +460,10 @@ ggplot(tophit, aes(x=avg, y=name)) +
   facet_grid(lg ~ ., scales="free_y", space="free_y")
 ```
 
-![plot of chunk unnamed-chunk-33](my_slideshow-figure/unnamed-chunk-33-1.png)
-  
+The resulting dot plot
+=============================
+![plot of chunk unnamed-chunk-34](my_slideshow-figure/unnamed-chunk-34-1.png)
+
 Line graphs
 =======================================
 Next we will see how **ggplot2** handles line graphs. We add **geom_line()** and **geom_point()** at various spots.
@@ -485,7 +479,7 @@ ggplot(worldpop, aes(x=Year, y=Population)) +
   geom_point()
 ```
 
-![plot of chunk unnamed-chunk-34](my_slideshow-figure/unnamed-chunk-34-1.png)
+![plot of chunk unnamed-chunk-35](my_slideshow-figure/unnamed-chunk-35-1.png)
 
 fig 4-13b - line graph with points and color
 =======================================
@@ -497,7 +491,7 @@ ggplot(tg, aes(x=dose, y=length, color=supp)) +
   geom_point(shape=22, size=3, fill="white")
 ```
 
-![plot of chunk unnamed-chunk-35](my_slideshow-figure/unnamed-chunk-35-1.png)
+![plot of chunk unnamed-chunk-36](my_slideshow-figure/unnamed-chunk-36-1.png)
 
 fig 4-19 - shaded area graph
 =======================================
@@ -513,7 +507,10 @@ ggplot(sunspotyear, aes(x=Year, y=Sunspots)) +
   geom_line()
 ```
 
-![plot of chunk unnamed-chunk-36](my_slideshow-figure/unnamed-chunk-36-1.png)
+
+The resulting graph
+=======================================
+![plot of chunk unnamed-chunk-38](my_slideshow-figure/unnamed-chunk-38-1.png)
 
 fig 4-20 - stacked area graph with full colors
 =======================================
@@ -524,7 +521,7 @@ ggplot(uspopage, aes(x=Year, y=Thousands, fill=AgeGroup)) +
   geom_area()
 ```
 
-![plot of chunk unnamed-chunk-37](my_slideshow-figure/unnamed-chunk-37-1.png)
+![plot of chunk unnamed-chunk-39](my_slideshow-figure/unnamed-chunk-39-1.png)
 
 fig 4-23 - stacked area graph with subtler color, reversed stacking order
 =======================================
@@ -537,7 +534,7 @@ ggplot(uspopage, aes(x=Year, y=Thousands, fill=AgeGroup,
   geom_line(position="stack", size=.2)
 ```
 
-![plot of chunk unnamed-chunk-38](my_slideshow-figure/unnamed-chunk-38-1.png)
+![plot of chunk unnamed-chunk-40](my_slideshow-figure/unnamed-chunk-40-1.png)
 
 fig 4-25 - line graph with confidence region
 =======================================
@@ -554,7 +551,7 @@ ggplot(clim, aes(x=Year, y=Anomaly10y)) +
   geom_line()
 ```
 
-![plot of chunk unnamed-chunk-39](my_slideshow-figure/unnamed-chunk-39-1.png)
+![plot of chunk unnamed-chunk-41](my_slideshow-figure/unnamed-chunk-41-1.png)
   
 Scatter plots
 ===========================================
@@ -569,7 +566,7 @@ ggplot(heightweight, aes(x=ageYear, y=heightIn)) +
   geom_point()
 ```
 
-![plot of chunk unnamed-chunk-40](my_slideshow-figure/unnamed-chunk-40-1.png)
+![plot of chunk unnamed-chunk-42](my_slideshow-figure/unnamed-chunk-42-1.png)
 
 fig 5-4a - Scatter plot with third (factor) variable
 ===========================================
@@ -579,7 +576,7 @@ ggplot(heightweight, aes(x=ageYear, y=heightIn, color=sex)) +
   geom_point()
 ```
 
-![plot of chunk unnamed-chunk-41](my_slideshow-figure/unnamed-chunk-41-1.png)
+![plot of chunk unnamed-chunk-43](my_slideshow-figure/unnamed-chunk-43-1.png)
 
 fig 5-9a - Scatter plot with third (continuous) variable
 ===========================================
@@ -589,7 +586,7 @@ ggplot(heightweight, aes(x=ageYear, y=heightIn, color=weightLb)) +
   geom_point()
 ```
 
-![plot of chunk unnamed-chunk-42](my_slideshow-figure/unnamed-chunk-42-1.png)
+![plot of chunk unnamed-chunk-44](my_slideshow-figure/unnamed-chunk-44-1.png)
 
 fig 5-11 - Scatter plot with two extra variables
 ===========================================
@@ -603,7 +600,7 @@ ggplot(heightweight, aes(x=ageYear, y=heightIn,
   scale_color_brewer(palette="Set1")
 ```
 
-![plot of chunk unnamed-chunk-43](my_slideshow-figure/unnamed-chunk-43-1.png)
+![plot of chunk unnamed-chunk-45](my_slideshow-figure/unnamed-chunk-45-1.png)
 
 fig 6-33b - Density plot mapped to color
 ===========================================
@@ -613,7 +610,7 @@ p <- ggplot(faithful, aes(x=eruptions, y=waiting))
 p + stat_density2d(aes(color=..level..))
 ```
 
-![plot of chunk unnamed-chunk-44](my_slideshow-figure/unnamed-chunk-44-1.png)
+![plot of chunk unnamed-chunk-46](my_slideshow-figure/unnamed-chunk-46-1.png)
 
 fig 6-34b - Density plot with points and density mapped to alpha
 ===========================================
@@ -625,5 +622,123 @@ p + geom_point() +
                  contour=FALSE)
 ```
 
-![plot of chunk unnamed-chunk-45](my_slideshow-figure/unnamed-chunk-45-1.png)
+![plot of chunk unnamed-chunk-47](my_slideshow-figure/unnamed-chunk-47-1.png)
 
+
+A simple project
+==============
+
+Get the data
+=====================
+Here, I set up the function to trim the extra ID column and add 
+a season column. I will use this function on each file as I read
+the file into the workspace.
+
+```r
+edit_tables <- function(df, year) {
+  df <- df[, 2:28]
+  season <- rep(toString(year), nrow(df))
+  df <- cbind(season, df)
+}
+```
+
+Edit data frame
+======================
+Now I can use that function to edit each data frame right when it is created.
+
+```r
+b2012 <- read.csv('blazers2012.csv')
+b2012 <- edit_tables(b2012, 2012)
+
+b2013 <- read.csv('blazers2013.csv')
+b2013 <- edit_tables(b2013, 2013)
+
+b2014 <- read.csv('blazers2014.csv')
+b2014 <- edit_tables(b2014, 2014)
+
+b2015 <- read.csv('blazers2015.csv')
+b2015 <- edit_tables(b2015, 2015)
+
+b2016 <- read.csv('blazers2016.csv')
+b2016 <- edit_tables(b2016, 2016)
+```
+
+
+Create the main data frame
+===========================
+
+```r
+# Now I need all that data in one "object."
+# I can make one data frame out of many by using
+# R's "rbind" (or row-bind) function.
+blz <- rbind (b2012, b2013, b2014, b2015, b2016)
+```
+
+State of the data frame
+=======================
+Now our project has a data frame called "blz". That will be
+the main item of interest. We could delete the other data frames
+to preserve memory, but these aren't very large files and it doesn't
+make sense to worry about them right now.
+
+The current blz data frame doesn't have very descriptive 
+column names. In some case they are long and unwieldy for
+the purposes of display in a data frame.
+
+Revise column names
+=====================
+Here I define some shorter names. Some aren't very descriptive,
+but for the purpose of translating NBA season averages they 
+should make sense.
+
+```r
+my_cols <- c('seas', 'pname', 'age',
+             'games', 'start', 'mins',
+             'fg', 'fga', 'fgp',
+             't3p', 't3pa', 't3pp',
+             't2p', 't2pa', 't2pp', 'efgp',
+             'ft', 'fta', 'ftp',
+             'orb', 'drb', 'trb',
+             'ast', 'stl', 'blk',
+             'tov', 'pf', 'pts')
+```
+
+Assign column names
+====================
+Here I assign those column names to the blz data frame.
+
+```r
+colnames(blz) <- my_cols
+```
+
+And the data frame is ready.
+
+
+Subset the data
+======================
+I want to create a data frame of players who played more than one season
+in the time frame under consideration.
+
+Here's the basic functionality. Running this will PRINT the
+different subsets, but it does not STORE them anywhere. This
+is here for demonstration purposes so we can se what we're 
+getting.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+Error in eval(expr, envir, enclos) : object 'player' not found
+```
