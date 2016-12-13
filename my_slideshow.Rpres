@@ -614,7 +614,7 @@ Here's the basic functionality. Running this will PRINT the
 different subsets, but it does not STORE them anywhere. This
 is here for demonstration purposes so we can se what we're 
 getting.
-```{r}
+```{r eval=FALSE}
 for (i in 1:length(player)) {
   if (nrow(player[[i]]) > 1) {
     print (player[[i]])
@@ -624,7 +624,7 @@ for (i in 1:length(player)) {
 
 The mult_seasons function
 =========================
-```{r}
+```{r eval=FALSE}
 mult_seasons <- function(mylist) {
   collector <- data.frame()
   for (i in 1:length(mylist)) {
@@ -641,7 +641,7 @@ Example usage
 As an example, we can create "twoplus", a data frame of season
 averages of players with at least 2 years on the team during
 they years in question.
-```{r}
+```{r eval=FALSE}
 twoplus <- mult_seasons(player)
 head(twoplus)
 ```

@@ -724,21 +724,120 @@ different subsets, but it does not STORE them anywhere. This
 is here for demonstration purposes so we can se what we're 
 getting.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```r
+for (i in 1:length(player)) {
+  if (nrow(player[[i]]) > 1) {
+    print (player[[i]])
+  }
+}
 ```
-Error in eval(expr, envir, enclos) : object 'player' not found
+
+The mult_seasons function
+=========================
+
+```r
+mult_seasons <- function(mylist) {
+  collector <- data.frame()
+  for (i in 1:length(mylist)) {
+    if (nrow(mylist[[i]]) > 1) {
+      collector <- rbind(collector, mylist[[i]])
+    }
+  }
+  return(collector)
+}
 ```
+
+Example usage
+=============
+As an example, we can create "twoplus", a data frame of season
+averages of players with at least 2 years on the team during
+they years in question.
+
+```r
+twoplus <- mult_seasons(player)
+head(twoplus)
+```
+
+Visualizations
+=================
+Here are graphs of the distributions of player ages and rebounding averages over the time period in question.
+
+
+Graph: Age
+==========
+
+```r
+ggplot(blz) + 
+  geom_bar(aes(x=age),
+           color='wheat4',
+           fill='wheat1') +
+  ggtitle("Blazers Age Distribution\n2012 - 2016") +
+  theme_light()
+```
+
+![plot of chunk unnamed-chunk-56](my_slideshow-figure/unnamed-chunk-56-1.png)
+
+Graph: Rebounds
+================
+
+```r
+ggplot(blz) + 
+  geom_histogram(aes(x=trb), 
+                 binwidth=.85, 
+                 color='wheat4', 
+                 fill='wheat1') +
+  ggtitle("Distribution of Rebounding Averages\nBlazers 2012 - 2016") +
+  theme_light()
+```
+
+![plot of chunk unnamed-chunk-57](my_slideshow-figure/unnamed-chunk-57-1.png)
+
+More graphs
+==============
+Here are lists of players by length of tenure with the team over that time period. We'll get the data graphed, and then make some fine tuning adjustments to get it in order.
+
+First attempt
+==============
+
+```r
+ggplot(blz) +
+  geom_bar(aes(x=pname), 
+           color='wheat4',
+           fill='wheat1') +
+  coord_flip() +
+  xlab("Seasons") +
+  ylab("Player") +
+  ggtitle("Blazers Players by Length of Tenure\n2012 - 2016") +
+  theme(axis.text.y=element_text(size=rel(0.8)))
+```
+
+![plot of chunk unnamed-chunk-58](my_slideshow-figure/unnamed-chunk-58-1.png)
+
+Extra code
+==============
+
+```r
+playersums <- table(blz$pname)
+playerdf <- as.data.frame(playersums)
+colnames(playerdf) <- c('pname', 'count')
+playerdf <- transform(playerdf,
+                      pname=reorder(pname, count))
+```
+
+Now we try the graph again
+========================
+
+```r
+ggplot(playerdf) +
+  geom_bar(aes(x=pname, y=count),
+           stat='identity',
+           color='wheat4',
+           fill='wheat1') +
+  coord_flip() +
+  ggtitle("Blazers Players by Length of Tenure\n 2012 - 2016") +
+  xlab("Seasons") +
+  ylab("Player") +
+  theme(axis.text.y=element_text(size=rel(0.8)))
+```
+
+![plot of chunk unnamed-chunk-60](my_slideshow-figure/unnamed-chunk-60-1.png)
